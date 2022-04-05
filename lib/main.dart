@@ -15,7 +15,11 @@ class ControlPanel extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Control Panel',
       theme: handleTheme(context),
-      home: Login(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => Login(),
+        '/sign-up': (context) => SignUp(),
+      },
     );
   }
 }

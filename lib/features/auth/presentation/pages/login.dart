@@ -1,3 +1,4 @@
+import 'package:control_panel/core/presentation/helpers/alert.dart';
 import 'package:flutter/material.dart';
 
 import 'package:control_panel/core/presentation/helpers/asset.dart';
@@ -9,7 +10,10 @@ import 'package:control_panel/core/presentation/widgets/button/button.dart';
 import 'package:control_panel/core/presentation/widgets/text/text_with_divider.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  Login({Key? key}) : super(key: key);
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +29,15 @@ class Login extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.02) : 0),
-                Center(child: Asset.get(
+                SizedBox(
+                    height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.02) : 0),
+                Center(
+                    child: Asset.get(
                   Assets.loginSvg,
                   height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.2) : 0,
                 )),
-                SizedBox(height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.09) : 0),
+                SizedBox(
+                    height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.09) : 0),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -38,9 +45,16 @@ class Login extends StatelessWidget {
                     CTitle('Bem-vindo de volta!'),
                     CTitle('Faça login para acessar.', styleAs: CTitleStyles.secondary),
                     SizedBox(height: screen.vhPerc(0.03)),
-                    CInput(placeholder: 'E-mail'),
+                    CInput(
+                      placeholder: 'E-mail',
+                      controller: emailController,
+                    ),
                     SizedBox(height: screen.vhPerc(0.02)),
-                    CInput(placeholder: 'Senha', isPasswordField: true),
+                    CInput(
+                      placeholder: 'Senha', 
+                      isPasswordField: true,
+                      controller: passwordController
+                    ),
                     SizedBox(height: screen.vhPerc(0.02)),
                     Align(
                       alignment: Alignment.centerRight,
@@ -52,13 +66,23 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: screen.vhPerc(0.04)),
-                    CButton(text: 'Entrar'),
+                    CButton(
+                      text: 'Entrar',
+                      onPressed: () {
+                        Alert.await(context, emailController.text + ' - ' + passwordController.text);
+                      },
+                    ),
                   ],
                 ),
                 SizedBox(height: screen.vhPerc(0.11)),
                 CTextWithDivider('Ainda não possui uma conta?'),
                 SizedBox(height: screen.vhPerc(0.01)),
-                CButton(text: 'Criar Conta', styleAs: CButtonStyles.light),
+                CButton(
+                  text: 'Criar Conta',
+                  styleAs: CButtonStyles.light,
+                  onPressed: () =>
+                      Navigator.pushReplacementNamed(context, '/sign-up'),
+                ),
               ],
             ),
           ),
