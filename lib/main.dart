@@ -12,6 +12,7 @@ class ControlPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Control Panel',
       theme: handleTheme(context),
       home: Login(),

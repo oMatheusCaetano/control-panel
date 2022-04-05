@@ -25,12 +25,12 @@ class Login extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.03) : 0),
+                SizedBox(height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.02) : 0),
                 Center(child: Asset.get(
                   Assets.loginSvg,
                   height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.2) : 0,
                 )),
-                SizedBox(height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.10) : 0),
+                SizedBox(height: screen.vhPerc(0.2) > 99 ? screen.vhPerc(0.09) : 0),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -41,11 +41,21 @@ class Login extends StatelessWidget {
                     CInput(placeholder: 'E-mail'),
                     SizedBox(height: screen.vhPerc(0.02)),
                     CInput(placeholder: 'Senha', isPasswordField: true),
-                    SizedBox(height: screen.vhPerc(0.03)),
+                    SizedBox(height: screen.vhPerc(0.02)),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Esqueceu sua senha?',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: screen.vhPerc(0.04)),
                     CButton(text: 'Entrar'),
                   ],
                 ),
-                SizedBox(height: screen.vhPerc(0.14)),
+                SizedBox(height: screen.vhPerc(0.11)),
                 CTextWithDivider('Ainda não possui uma conta?'),
                 SizedBox(height: screen.vhPerc(0.01)),
                 CButton(text: 'Criar Conta', styleAs: CButtonStyles.light),
