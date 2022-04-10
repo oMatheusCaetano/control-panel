@@ -1,13 +1,13 @@
-import 'package:control_panel/core/presentation/helpers/alert.dart';
+import 'package:control_panel/view/helpers/alert.dart';
 import 'package:flutter/material.dart';
 
-import 'package:control_panel/core/presentation/helpers/asset.dart';
-import 'package:control_panel/core/presentation/utils/screen_dimensions.dart';
+import 'package:control_panel/view/helpers/asset.dart';
+import 'package:control_panel/view/utils/screen_dimensions.dart';
 
-import 'package:control_panel/core/presentation/widgets/input/input.dart';
-import 'package:control_panel/core/presentation/widgets/text/title.dart';
-import 'package:control_panel/core/presentation/widgets/button/button.dart';
-import 'package:control_panel/core/presentation/widgets/text/text_with_divider.dart';
+import 'package:control_panel/view/widgets/input/input.dart';
+import 'package:control_panel/view/widgets/text/title.dart';
+import 'package:control_panel/view/widgets/button/button.dart';
+import 'package:control_panel/view/widgets/text/text_with_divider.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -69,7 +69,7 @@ class Login extends StatelessWidget {
                     CButton(
                       text: 'Entrar',
                       onPressed: () {
-                        Alert.await(context, emailController.text + ' - ' + passwordController.text);
+                        Alert.wait(context, emailController.text + ' - ' + passwordController.text);
                       },
                     ),
                   ],

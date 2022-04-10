@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData handleTheme(BuildContext context) {
   return ThemeData(
+    scaffoldBackgroundColor: Colors.white,
     dividerColor: Color(0xFFE9EBEF),
     backgroundColor: Color(0xFFE9EBEF),
     textTheme: TextTheme(

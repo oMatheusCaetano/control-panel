@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Alert {
-  static await(BuildContext context, [String? message = 'Carregando...']) {
+  static wait(BuildContext context, [String? message = 'Carregando...']) {
     showModalBottomSheet(
       context: context,
       // isDismissible: false,

@@ -1,8 +1,9 @@
-import 'package:control_panel/features/auth/presentation/pages/sign_up.dart';
+import 'package:control_panel/view/pages/auth/sign_up.dart';
+import 'package:control_panel/view/pages/credit_cards.dart';
 import 'package:flutter/material.dart';
 
-import 'package:control_panel/core/presentation/theme/theme.dart';
-import 'package:control_panel/features/auth/presentation/pages/login.dart';
+import 'package:control_panel/view/theme/theme.dart';
+import 'package:control_panel/view/pages/auth/login.dart';
 
 void main() => runApp(const ControlPanel());
 
@@ -15,10 +16,14 @@ class ControlPanel extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Control Panel',
       theme: handleTheme(context),
-      initialRoute: '/login',
+      initialRoute: '/credit-cards',
       routes: {
+        //! Auth
         '/login': (context) => Login(),
         '/sign-up': (context) => SignUp(),
+
+        //! Finances
+        '/credit-cards': (context) => CreditCards(),
       },
     );
   }
