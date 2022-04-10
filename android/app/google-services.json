@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "526006143677",
+    "project_id": "mc-control-panel-mc777",
+    "storage_bucket": "mc-control-panel-mc777.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526006143677:android:cc80a5e06bedbdc6de05d4",
+        "android_client_info": {
+          "package_name": "com.mc.control_panel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526006143677-sfoaoobjcuftvbugde51qll4l3gmbb7a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrCrAQ7QM2SKIk7mX_gZkF224NKW7IqXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526006143677-sfoaoobjcuftvbugde51qll4l3gmbb7a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
