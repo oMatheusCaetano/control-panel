@@ -4,9 +4,7 @@ import 'package:control_panel/view/helpers/asset.dart';
 import 'package:control_panel/view/utils/colored.dart';
 import 'package:control_panel/view/utils/screen_dimensions.dart';
 import 'package:control_panel/view/widgets/button/iconed_buttons_list.dart';
-import 'package:control_panel/view/widgets/card/credit_card.dart';
 import 'package:control_panel/view/widgets/carousel/credit_cards_carousel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CreditCards extends StatefulWidget {
@@ -52,29 +50,28 @@ class _CreditCardsState extends State<CreditCards> {
         children: [
           //? Header
           AnimatedContainer(
-            duration: Duration(milliseconds: 300),
-            padding: EdgeInsets.only(top: screen.top, bottom: 5),
-            decoration: BoxDecoration(
-              color: Colored.darken(creditCards[creditCardsIndex].bgColor),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15),
+              duration: Duration(milliseconds: 300),
+              padding: EdgeInsets.only(top: screen.top, bottom: 5),
+              decoration: BoxDecoration(
+                color: Colored.darken(creditCards[creditCardsIndex].bgColor),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                ),
+                gradient: RadialGradient(
+                  center: Alignment.bottomCenter,
+                  radius: 3,
+                  colors: [
+                    Colored.darken(creditCards[creditCardsIndex].bgColor),
+                    Colored.lighten(creditCards[creditCardsIndex].bgColor),
+                  ],
+                ),
               ),
-              gradient: RadialGradient(
-                center: Alignment.bottomCenter,
-                radius: 3,
-                colors: [
-                  Colored.darken(creditCards[creditCardsIndex].bgColor),
-                  Colored.lighten(creditCards[creditCardsIndex].bgColor),
-                ],
-              ),
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 15, left: 15),
-                  child: Row(
-                    children: [
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 15, left: 15),
+                    child: Row(children: [
                       Row(
                         children: [
                           CircleAvatar(
@@ -94,16 +91,16 @@ class _CreditCardsState extends State<CreditCards> {
                           ),
                         ],
                       ),
-                    ]
+                    ]),
                   ),
-                ),
-                CCreditCardsCarousel(
-                  creditCards, 
-                  onPageChanged: (_, i) => setState(() { creditCardsIndex = i; }),
-                ),
-              ],
-            )
-          ),
+                  CCreditCardsCarousel(
+                    creditCards,
+                    onPageChanged: (_, i) => setState(() {
+                      creditCardsIndex = i;
+                    }),
+                  ),
+                ],
+              )),
 
           //? Tabs
           Expanded(
@@ -116,88 +113,103 @@ class _CreditCardsState extends State<CreditCards> {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Column(
-                          children: [
-                            CIconedButtonsList(items: [
-                              CIconedButtonsListItem(
-                                icon: Icons.add_rounded,
-                                label: 'Novo Cartão',
-                              ),
-                              CIconedButtonsListItem(
-                                icon: Icons.edit_rounded,
-                                label: 'Editar Cartão',
-                              ),
-                              CIconedButtonsListItem(
-                                icon: Icons.delete_rounded,
-                                label: 'Excluir Cartão',
-                              ),
-                              CIconedButtonsListItem(
-                                icon: Icons.more_horiz_rounded,
-                                label: 'Ocultar Opções',
-                              ),
-                            ]),
-
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  'Dados do Cartão',
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        children: [
+                          CIconedButtonsList(items: [
+                            CIconedButtonsListItem(
+                              icon: Icons.add_rounded,
+                              label: 'Novo Cartão',
+                            ),
+                            CIconedButtonsListItem(
+                              icon: Icons.edit_rounded,
+                              label: 'Editar Cartão',
+                            ),
+                            CIconedButtonsListItem(
+                              icon: Icons.delete_rounded,
+                              label: 'Excluir Cartão',
+                            ),
+                            CIconedButtonsListItem(
+                              icon: Icons.more_horiz_rounded,
+                              label: 'Ocultar Opções',
+                            ),
+                          ]),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Dados do Cartão',
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
-                            
-                            Expanded(
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.vertical,
-                                physics: BouncingScrollPhysics(),
-                                child: Column(
-                                  children: [
-                                    ListTile(
-                                      trailing: Asset.fromName(creditCards[creditCardsIndex].bank, height: 20),
-                                      title: Text('Banco'),
-                                      subtitle: Text(creditCards[creditCardsIndex].bank),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-                                    ),
-                                    ListTile(
-                                      trailing: Asset.fromName(creditCards[creditCardsIndex].flag, height: 30),
-                                      title: Text('Bandeira'),
-                                      subtitle: Text(creditCards[creditCardsIndex].flag),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                    ),
-                                    ListTile(
-                                      title: Text('Nome no Cartão'),
-                                      subtitle: Text(creditCards[creditCardsIndex].cardholderName),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                    ),
-                                    ListTile(
-                                      title: Text('Número'),
-                                      subtitle: Text(creditCards[creditCardsIndex].number),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                    ),
-                                    ListTile(
-                                      title: Text('Validade'),
-                                      subtitle: Text(creditCards[creditCardsIndex].expiration),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                    ),
-                                    ListTile(
-                                      title: Text('CVV'),
-                                      subtitle: Text(creditCards[creditCardsIndex].cvv.toString()),
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                                    ),
-                                  ],
-                                ),
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              physics: BouncingScrollPhysics(),
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    trailing: Asset.fromName(
+                                        creditCards[creditCardsIndex].bank,
+                                        height: 20),
+                                    title: Text('Banco'),
+                                    subtitle: Text(
+                                        creditCards[creditCardsIndex].bank),
+                                    contentPadding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 0),
+                                  ),
+                                  ListTile(
+                                    trailing: Asset.fromName(
+                                        creditCards[creditCardsIndex].flag,
+                                        height: 30),
+                                    title: Text('Bandeira'),
+                                    subtitle: Text(
+                                        creditCards[creditCardsIndex].flag),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                  ),
+                                  ListTile(
+                                    title: Text('Nome no Cartão'),
+                                    subtitle: Text(creditCards[creditCardsIndex]
+                                        .cardholderName),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                  ),
+                                  ListTile(
+                                    title: Text('Número'),
+                                    subtitle: Text(
+                                        creditCards[creditCardsIndex].number),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                  ),
+                                  ListTile(
+                                    title: Text('Validade'),
+                                    subtitle: Text(creditCards[creditCardsIndex]
+                                        .expiration),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                  ),
+                                  ListTile(
+                                    title: Text('CVV'),
+                                    subtitle: Text(creditCards[creditCardsIndex]
+                                        .cvv
+                                        .toString()),
+                                    contentPadding:
+                                        EdgeInsets.symmetric(horizontal: 20),
+                                  ),
+                                ],
                               ),
-                            )
-                          ],
-                        ),
-                      );
+                            ),
+                          )
+                        ],
+                      ),
+                    );
                   },
                 );
               }).toList(),

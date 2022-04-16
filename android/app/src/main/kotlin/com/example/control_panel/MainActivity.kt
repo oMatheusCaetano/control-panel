@@ -1,4 +1,4 @@
-package com.example.control_panel
+package com.mc.control_panel
 
 import io.flutter.embedding.android.FlutterActivity
 
