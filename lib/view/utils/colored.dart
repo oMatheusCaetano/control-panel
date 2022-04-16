@@ -13,6 +13,8 @@ class Colored extends Color {
 
   static backgroundColor(BuildContext context) => Theme.of(context).backgroundColor;
 
+  static schemePrimary(BuildContext context) => Theme.of(context).colorScheme.primary;
+
   static String toHex(Color color) {
     return '#'
         '${color.alpha.toRadixString(16).padLeft(2, '0')}'

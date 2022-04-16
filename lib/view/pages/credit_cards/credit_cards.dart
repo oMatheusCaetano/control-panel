@@ -1,11 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:control_panel/data/repositories/credit_card_repository.dart';
+import 'package:control_panel/data/services/http/http.dart';
+import 'package:control_panel/data/services/http/http_response.dart';
 import 'package:control_panel/domain/models/credit_card.dart';
 import 'package:control_panel/view/helpers/asset.dart';
+import 'package:control_panel/view/pages/credit_cards/credit_cards_shimmer.dart';
 import 'package:control_panel/view/utils/colored.dart';
 import 'package:control_panel/view/utils/screen_dimensions.dart';
 import 'package:control_panel/view/widgets/button/iconed_buttons_list.dart';
 import 'package:control_panel/view/widgets/carousel/credit_cards_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CreditCards extends StatefulWidget {
   const CreditCards({Key? key}) : super(key: key);
@@ -42,8 +47,23 @@ class _CreditCardsState extends State<CreditCards> {
   ];
 
   @override
+  initState() {
+    super.initState();
+    loadCreditCards();
+  }
+
+  Future<void> loadCreditCards() async {
+    print('Loading credit cards...');
+    final repo = CreditCardRepository();
+    final creditCards = await repo.all();
+    print(creditCards);
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screen = ScreenDimensions(context);
+
+    return CreditCardsShimmer();
 
     return Scaffold(
       body: Column(
@@ -123,9 +143,11 @@ class _CreditCardsState extends State<CreditCards> {
                               label: 'Novo Cartão',
                             ),
                             CIconedButtonsListItem(
-                              icon: Icons.edit_rounded,
-                              label: 'Editar Cartão',
-                            ),
+                                icon: Icons.edit_rounded,
+                                label: 'Editar Cartão',
+                                onPressed: () {
+                                  loadCreditCards();
+                                }),
                             CIconedButtonsListItem(
                               icon: Icons.delete_rounded,
                               label: 'Excluir Cartão',

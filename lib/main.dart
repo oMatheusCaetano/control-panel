@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
 
 import 'package:control_panel/view/pages/auth/sign_up.dart';
-import 'package:control_panel/view/pages/credit_cards.dart';
+import 'package:control_panel/view/pages/credit_cards/credit_cards.dart';
 import 'package:control_panel/view/theme/theme.dart';
 import 'package:control_panel/view/pages/auth/login.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const ControlPanel());
 }
 
